@@ -21,6 +21,12 @@ inputs:
     description: 'Log level'
     required: false
     default: "INFO"
+  docker_username:
+    description: 'Docker username'
+    required: false
+  docker_password:
+    description: 'Docker password'
+    required: false
 runs:
   using: 'docker'
   image: 'docker://harbor.imio.be/docker-hub/plone/code-quality:latest'
@@ -31,3 +37,5 @@ runs:
   env:
     BASE_DIR: ${{ inputs.base_dir }}
     LOG_LEVEL: ${{ inputs.log_level }}
+    DOCKER_USERNAME: ${{ inputs.docker_username || '' }}
+    DOCKER_PASSWORD: ${{ inputs.docker_password || '' }}
